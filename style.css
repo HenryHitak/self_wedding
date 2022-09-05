@@ -5,6 +5,9 @@
     list-style: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 .container {
     width: 100vw;
     height: 100vh;

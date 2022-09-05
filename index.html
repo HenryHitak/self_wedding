@@ -20,17 +20,47 @@
                 Mobile Invitation
             </p>
         </h1>
-        <div>
-            <aside></aside>
+        <div class="background-music">
+            <audio controls autoplay>
+                <source src="">
+            </audio>
         </div>
     </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#invitationphrase">Invitation</a>
+            </li>
+            <li>
+                <a href="#gallery">Gallery</a>
+            </li>
+            <li>
+                <a href="#live">Live</a>
+            </li>
+            <li>
+                <a href="#map">Direction</a>
+            </li>
+            <li>
+                <a href="#bank">Love</a>
+            </li>
+            <li>
+                <a href="#msg">Leave Messages</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
     <main>
         <section>
-
+            <iframe src="https://www.youtube.com/embed/vYX6WWpbUWk" title="YouTube video player" allowfullscreen></iframe>
         </section>
-        <section class="invitationphrase">
+        <section class="invitationphrase" id="invitationphrase">
             <h2>
-                    Wedding Inviatition
+                Wedding Invitation
             </h2> 
             <article>
                 <div>
@@ -50,7 +80,7 @@
                 </div>
             </article>
         </section>
-        <section class="gallery">
+        <section class="gallery" id="gallery">
             <h2>
                 Gallery
             </h2>
@@ -58,7 +88,7 @@
 
             </aside>
         </section>
-        <section class="gallery">
+        <section class="live" id="live">
             <h2>
                 Live
             </h2>
@@ -70,17 +100,17 @@
             <span>12th fo Oct, 12 PM</span>
             <a href="">라이브 보기 || Watch</a>
         </section>
-        <section class="map">
-            <div>
-                <p>오시는 길</p>
-            </div>
+        <section class="map" id="map">
+            <h2>
+                <p>오시는 길 / Direction</p>
+            </h2>
             <div name="오는길 사진, 주차정보, ">
                 <aside>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.937038582405!2d127.11999411556965!3d37.41496304055128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b453425a878d5%3A0xabe3cf77fa8ed3da!2sManna%20Church%20Bundang!5e0!3m2!1sen!2sca!4v1662353510725!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </aside>
             </div>
         </section>
-        <section name="bank" class="bank">
+        <section name="bank" class="bank" id="bank">
             <h2>         
                 마음을 전하는 곳/Send your love
             </h2>
@@ -105,7 +135,7 @@
                 </p>
             </div>
         </section>
-        <section class="msg">
+        <section class="msg" id="msg">
             <h2>
                 <p>Message</p>
             </h2>
@@ -126,7 +156,7 @@
         </section>
     </main>
 </body>
-<footer>
+<footer class="contact" id="contact">
     <div>
         <p>Hitak Lee || 이희탁</p>
         <div class="sns">
@@ -162,6 +192,32 @@
 </footer>
 <script src="https://use.fontawesome.com/f06cf1997e.js"></script>
 <script>
+// -----------------------------smooth scroll----------------------------------------------------------//
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+// -----------------------------smooth scroll----------------------------------------------------------//
 
 </script>
 </html>
