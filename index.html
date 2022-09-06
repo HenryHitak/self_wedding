@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="./jquery-3.6.0.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/snowfall.jquery.js"></script>
     <title>Invitation</title>
 </head>
-<body>
-    <header>
+<body class="darkBg">
+        <input type="button" id="clear" value="Click to clear"/>
+        <input type="button" id="round" value="Rounded" hidden/>
+        <input type="button" id="shadows" value="Shadows" hidden/>
+        <input type="button" id="roundshadows" hidden value="Rounded Shadows"/>
+        <input type="button" id="imagebut" value="Sakura"/>
+        <header>
         <h1>
             <p>
                 이희탁 & 미사키 모바일 청첩장
@@ -29,6 +35,7 @@
             2022.11.12 SAT 11:00 A.M.
             분당 만나교회 (경기도 성남시 분당구 양현로 353)
         </h3>
+
     </header>
     <nav>
         <ul>
@@ -118,26 +125,19 @@
             <h2>         
                 마음을 전하는 곳/Send your love
             </h2>
-            <button>
-                <p>
+            <button id="show1">신랑</button>
+                <p id="p1">
                     이희탁 / Hitak Lee
-                </p>
-                <p>
                     농혐: 168-02-37-21-02
                     카카오: henrynow
+                <button id="hide1">닫기</button>
                 </p>
-            </button>
-            <button>
-                <p>
-                    혼주
-                </p>
-                <p>
-                    이진구 / Jinku Lee
-                </p>
-                <p>
-                    국민은행 653202-04-069296
-                </p>
-            </button>
+            <button id="show2">혼주</button>
+            <p id="p2">
+                이진구 / Jinku Lee
+                국민은행 653202-04-069296
+            <button id="hide2">닫기</button>
+            </p>
         </section>
         <section class="msg" id="msg">
             <h2>
@@ -221,16 +221,79 @@ $(document).ready(function(){
     } // End if
   });
 });
-// ----------------------------- scroll----------------------------------------------------------//
-
+//-------------------------------hide show--------------------------------------------------------------------//
+$(document).ready(function(){
+  $("#hide1").click(function(){
+    $("#p1").hide(1000);
+  });
+  $("#show1").click(function(){
+    $("#p1").show(1000);
+  });
+});
+$(document).ready(function(){
+  $("#hide2").click(function(){
+    $("#p2").hide(1000);
+  });
+  $("#show2").click(function(){
+    $("#p2").show(1000);
+  });
+});
 </script>
-<script type='text/javascript'>     
-    $(document).ready(function(){
-        $(document).snowfall({
-            minSize: 5,
-            maxSize:10,
-            round : true
-         })
-    });
- </script>
+<!-- // ----------------------------- Snow scroll----------------------------------------------------------// -->
+<script src='./dist/snowfall.min.js'></script>
+    <script type='text/javascript'>     
+        var collectOnMe = document.querySelectorAll('.collectonme'),
+            buttons = document.getElementsByTagName("input");
+        
+        for(var i = 0; i < collectOnMe.length; i++){
+            collectOnMe[i].style.display = "none";
+        }
+        
+        //default options
+        snowFall.snow(document.body);
+
+        var testContainer = document.querySelector('.contact'),
+            testContainerIsSnowing = true;
+
+        snowFall.snow(testContainer);
+
+        testContainer.addEventListener('click', function(e){
+            testContainerIsSnowing = !testContainerIsSnowing;
+
+            if(!testContainerIsSnowing){
+                snowFall.snow(testContainer, "clear");
+            }else{
+                snowFall.snow(testContainer);
+            }
+        })
+
+        document.getElementById("clear").addEventListener("click", function(){
+            snowFall.snow(document.body, "clear");
+        });
+        
+        document.getElementById("round").addEventListener("click", function(){
+            document.body.className  = "darkBg";
+            snowFall.snow(document.body, "clear");
+            snowFall.snow(document.body, {round : true, minSize: 5, maxSize:8});
+        });
+        
+        document.getElementById("shadows").addEventListener("click", function(){
+            document.body.className  = "lightBg";
+            snowFall.snow(document.body, "clear");
+            snowFall.snow(document.body, {shadow : true, flakeCount:200});
+        });
+        
+        document.getElementById("roundshadows").addEventListener("click", function(){
+            document.body.className  = "lightBg";
+            snowFall.snow(document.body, "clear");
+            snowFall.snow(document.body, {round : true, shadow : true, minSize: 5, maxSize:8});
+        });
+        
+        document.getElementById("imagebut").addEventListener("click", function(){
+            document.body.className  = "darkBg";
+            snowFall.snow(document.body, "clear");
+            snowFall.snow(document.body, {image : "./images/snow.png", minSize: 10, maxSize:32});
+        });
+    
+         </script>
 </html>

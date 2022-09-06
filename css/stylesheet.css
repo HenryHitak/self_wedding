@@ -10,6 +10,9 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
-  color: #495670;
-}/*# sourceMappingURL=stylesheet.css.map */
+body{
+  background-color: rgb(243, 240, 226);
+}
+
+html,body{padding:0; margin:0; min-height: 100%; height:100%;}
+.lightBg{background : url(images/snow.png) red top center no-repeat;}
