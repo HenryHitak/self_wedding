@@ -14,11 +14,11 @@
     <title>Invitation</title>
 </head>
 <body class="darkBg">
-        <input type="button" id="clear" value="Click to clear"/>
+        <input type="button" id="clear" value="Click to clear" hidden/>
         <input type="button" id="round" value="Rounded" hidden/>
         <input type="button" id="shadows" value="Shadows" hidden/>
         <input type="button" id="roundshadows" hidden value="Rounded Shadows"/>
-        <input type="button" id="imagebut" value="Sakura"/>
+        <input type="button" id="imagebut" value="Sakura" hidden/>
         <header>
         <h1>
             <p>
@@ -130,13 +130,13 @@
                     이희탁 / Hitak Lee
                     농혐: 168-02-37-21-02
                     카카오: henrynow
-                <button id="hide1">닫기</button>
+                <button id="hide1">닫기/Close</button>
                 </p>
             <button id="show2">혼주</button>
             <p id="p2">
                 이진구 / Jinku Lee
                 국민은행 653202-04-069296
-            <button id="hide2">닫기</button>
+            <button id="hide2">닫기/Close</button>
             </p>
         </section>
         <section class="msg" id="msg">
@@ -161,8 +161,8 @@
     </main>
 </body>
 <footer class="contact" id="contact">
-    <button>
-        <p>Hitak Lee || 이희탁</p>
+    <button id="show3">Hitak Lee || 이희탁</button>
+    <div id="p3">
         <div class="sns">
             <span><a href="mailto:gmlxkr920901@gmail.com">Email:gmlxkr920901@gmail.com</a></span>
             <span>Located: Vancouer, BC</span>
@@ -175,20 +175,23 @@
                 <a href="https://www.instagram.com/henry_hitak_lee/" class="fa-brands fa-instagram"></a>
             </ul>
         </div>
-    </button>
-    <button>
-        <p>Misaki Tanaka || 미사키 타나카</p>
-        <div class="sns">
-            <span><a href="mailto:namilisalokina@hotmail.co.jp">Email:namilisalokina@hotmail.co.jp</a></span>
-            <span>Located: Vancouer, BC</span>
+        <button id="hide3">닫기/Close</button>
+    </div>
+
+    <button id="show4">Misaki Tanaka || 미사키 타나카</button>
+        <div id="p4">
+            <div class="sns">
+                <span><a href="mailto:namilisalokina@hotmail.co.jp">Email:namilisalokina@hotmail.co.jp</a></span>
+                <span>Located: Vancouer, BC</span>
+            </div>
+            <div class="container">
+                <ul class="social_icons">
+                    <a href="https://www.linkedin.com/in/misaki-tana/" class="fa-brands fa-linkedin"></a>
+                    <a href="https://www.instagram.com/milisaloki/" class="fa-brands fa-instagram"></a>
+                </ul>
+            </div>
+            <button id="hide4">닫기/Close</button>
         </div>
-        <div class="container">
-            <ul class="social_icons">
-                <a href="https://www.linkedin.com/in/misaki-tana/" class="fa-brands fa-linkedin"></a>
-                <a href="https://www.instagram.com/milisaloki/" class="fa-brands fa-instagram"></a>
-            </ul>
-        </div>
-    </button>
     <div>
         Copyright &copy; Hitak Lee  
         All Rights Reserved.
@@ -236,6 +239,22 @@ $(document).ready(function(){
   });
   $("#show2").click(function(){
     $("#p2").show(1000);
+  });
+});
+$(document).ready(function(){
+  $("#hide3").click(function(){
+    $("#p3").hide(1000);
+  });
+  $("#show3").click(function(){
+    $("#p3").show(1000);
+  });
+});
+$(document).ready(function(){
+  $("#hide4").click(function(){
+    $("#p4").hide(1000);
+  });
+  $("#show4").click(function(){
+    $("#p4").show(1000);
   });
 });
 </script>
@@ -289,10 +308,15 @@ $(document).ready(function(){
             snowFall.snow(document.body, {round : true, shadow : true, minSize: 5, maxSize:8});
         });
         
-        document.getElementById("imagebut").addEventListener("click", function(){
-            document.body.className  = "darkBg";
-            snowFall.snow(document.body, "clear");
-            snowFall.snow(document.body, {image : "./images/snow.png", minSize: 10, maxSize:32});
+        $(document).ready(function(){
+            function reAction(){
+                $("#imagebut").trigger("click");
+                setTimeout(function(){
+                    $("#clear").trigger("click");
+                },999999);
+                snowFall.snow(document.body, {image : "./images/snow.png", minSize: 10, maxSize:50});
+            }
+            reAction();
         });
     
          </script>
