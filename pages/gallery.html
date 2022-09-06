@@ -1,0 +1,65 @@
+<style>
+    #galleryPhoto{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2% 10%;
+    }
+
+    .container {
+      position: relative;
+      width: 25%;
+    }
+    
+    .image {
+      display: flex;
+      width: 100%;
+      height: auto;
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        background-color:rgb(239, 209, 214);
+    }
+    </style>
+<section class="gallery" id="gallery" ng-controller="spaCtrl">
+    <h2>
+        Gallery
+    </h2>
+    <article>
+        <div id="ShowSlideVue">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <!-- Full-width images with number and caption text -->
+                <!-- use repeat to create img div and numbertext -->
+                <div class="mySlides fade" ng-repeat="(idx,url) in imgUrl" ng-show="isActive[idx]">
+                    <img ng-src ={{url}} style="width:100%">
+                </div>
+                <!-- Next and previous buttons -->
+                <a class="prev" ng-click="shImage(-1)">&#10094;</a>
+                <a class="next" ng-click="shImage(1)">&#10095;</a>
+            </div>
+            <br/>
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" ng-repeat="(idx,url) in imgUrl" ng-class="{active: isActive[idx]}" ng-click="shImage(idx)"></span>
+            </div>
+        </div>
+    </article>
+    <article>
+        <div id="galleryPhoto">
+            <div class="container" ng-repeat="(idxGallery,urlGallery) in imgUrlGallery">
+                <img ng-src={{urlGallery}} class="image">
+                <div ng-class="{overlay: isActiveGallery[idxGallery]}">
+                </div>
+            </div>   
+        </div>
+    </article>
+</section>
